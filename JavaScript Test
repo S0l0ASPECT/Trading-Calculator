@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trading Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      background: #f7f9fc;
+    }
+    h2 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+    }
+    button {
+      margin-top: 1.5rem;
+      padding: 0.75rem;
+      width: 100%;
+      font-size: 1rem;
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .output {
+      margin-top: 2rem;
+      background: #e9f5ff;
+      padding: 1rem;
+      border-radius: 6px;
+    }
+    .output p {
+      margin: 0.5rem 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>Trading Calculator</h2>
+  <label>Account Balance ($)
+    <input type="number" id="balance" />
+  </label>
+  <label>Risk % per Trade
+    <input type="number" id="riskPercent" />
+  </label>
+  <label>Entry Price
+    <input type="number" id="entryPrice" />
+  </label>
+  <label>Stop-Loss Price
+    <input type="number" id="stopLoss" />
+  </label>
+  <label>Take-Profit Price
+    <input type="number" id="takeProfit" />
+  </label>
+  <label>Trade Type
+    <select id="tradeType">
+      <option value="long">Long</option>
+      <option value="short">Short</option>
+    </select>
+  </label>
+  <button onclick="calculate()">Calculate</button>
+
+  <div class="output" id="results" style="display:none;">
+    <h3>Results</h3>
+    <p><strong>Position Size:</strong> <span id="positionSize"></span> units</p>
+    <p><strong>Risk/Reward Ratio:</strong> <span id="rrRatio"></span></p>
+    <p><strong>Potential Profit:</strong> $<span id="profit"></span></p>
+    <p><strong>Potential Loss:</strong> $<span id="loss"></span></p>
+  </div>
+
+  <script>
+    function calculate() {
+      const balance = parseFloat(document.getElementById("balance").value);
+      const riskPercent = parseFloat(document.getElementById("riskPercent").value);
+      const entry = parseFloat(document.getElementById("entryPrice").value);
+      const stop = parseFloat(document.getElementById("stopLoss").value);
+      const take = parseFloat(document.getElementById("takeProfit"
